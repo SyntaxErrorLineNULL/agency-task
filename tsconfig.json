@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "declaration": true,
+        "esModuleInterop": true,
+        "removeComments": true,
+        "resolveJsonModule": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "target": "es2019",
+        "sourceMap": true,
+        "types": ["reflect-metadata"],
+        "outDir": "./dist",
+        "baseUrl": "./",
+        "incremental": true,
+        "paths": {}
+    }
+}
