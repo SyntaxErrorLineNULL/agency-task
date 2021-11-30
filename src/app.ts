@@ -8,6 +8,7 @@ import { AuthController } from './controller/auth.controller';
 import { connect } from 'mongoose';
 import 'reflect-metadata';
 import { Container } from 'typedi';
+import { PhotoController } from './controller/photo.controller';
 
 export class App {
     public app: express.Application;
@@ -24,7 +25,7 @@ export class App {
         }
         useContainer(Container);
         useExpressServer(this.app, {
-            controllers: [AuthController],
+            controllers: [AuthController, PhotoController],
             authorizationChecker: async (action: Action, roles?: string[]): Promise<boolean> => {
                 return true;
             }
