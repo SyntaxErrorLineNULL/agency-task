@@ -17,7 +17,6 @@ export class AuthService {
         if (!user) throw AuthorizationException.wrongCredentials();
         const passwordIsValid = await bcrypt.compare(password, user.password);
         if (!passwordIsValid) throw AuthorizationException.wrongCredentials();
-        console.log(user._id.toString());
         return await this.sign(user._id.toString());
     }
 

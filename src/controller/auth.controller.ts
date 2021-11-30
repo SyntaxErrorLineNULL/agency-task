@@ -32,4 +32,9 @@ export class AuthController {
         await user.save();
         return await this.authService.login(body.login, body.password);
     }
+
+    @Post('/login')
+    async login(@Body() body: SignInDto): Promise<{ bearerToken: string, userId: string }> {
+        return await this.authService.login(body.login, body.password);
+    }
 }
