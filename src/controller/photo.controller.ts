@@ -24,9 +24,17 @@ export class PhotoController {
         const user: IUser = await User.findById(userId);
         try {
             const { data } = await axios.get('http://jsonplaceholder.typicode.com/photos');
-            for (let i of data) {
-                const album: IAlbum = new Album({title: i.title, owner: user});
+            let album: IAlbum;
+            for (const i of data.slice(0, 1)) {
+                album = new Album({ id: i.albumId, title: i.title, owner: user });
                 await album.save();
+            }
+
+            for (let i of data) {
+                if (i.albumId > album.id) {
+                    album = new Album({ id: i.albumId, title: i.title, owner: user });
+                    await album.save();
+                }
                 const photo: IPhoto = new Photo({
                     id: i.id,
                     albumId: album,
