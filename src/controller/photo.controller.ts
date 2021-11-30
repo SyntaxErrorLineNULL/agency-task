@@ -44,6 +44,7 @@ export class PhotoController {
     @Get('/get-photos')
     async getPhoto(@QueryParams() query: PhotoQuery): Promise<PhotoDto[]> {
         try {
+            //Todo: убрать заглушку
             const user: IUser = await User.findById('61a5e478d051076645fadf64');
             const data: IPhoto[] = await Photo.find({ owner: user._id })
                 .skip((query.page * query.maxCount));
