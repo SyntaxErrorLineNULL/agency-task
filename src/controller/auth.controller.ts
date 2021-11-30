@@ -30,11 +30,11 @@ export class AuthController {
             password: await bcrypt.hash(body.password, 13),
         });
         await user.save();
-        return await this.authService.login(body.login, body.password);
+        return await this.authService.sign(user._id);
     }
 
     @Post('/login')
     async login(@Body() body: SignInDto): Promise<{ bearerToken: string, userId: string }> {
-        return await this.authService.login(body.login, body.password);
+        return await this.authService.login(body);
     }
 }
