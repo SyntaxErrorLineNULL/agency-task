@@ -3,7 +3,7 @@
  */
 
 export interface AlbumDto {
-    id: string;
+    id: number;
     title: string;
 }
 
