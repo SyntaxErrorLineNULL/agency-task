@@ -13,3 +13,7 @@ export class PhotoDeleteQuery {
     @IsNumber()
     photoId: number;
 }
+
+export class AlbumDeleteQuery {
+    albumId: any;
+}
