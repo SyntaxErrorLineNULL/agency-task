@@ -4,6 +4,7 @@
 
 import express from 'express';
 import { Action, useContainer, useExpressServer } from 'routing-controllers';
+import { AuthController } from './controller/auth.controller';
 import { connect } from 'mongoose';
 import 'reflect-metadata';
 import { Container } from 'typedi';
@@ -23,7 +24,7 @@ export class App {
         }
         useContainer(Container);
         useExpressServer(this.app, {
-            controllers: [],
+            controllers: [AuthController],
             authorizationChecker: async (action: Action, roles?: string[]): Promise<boolean> => {
                 return true;
             }
