@@ -26,13 +26,14 @@ export class ModelMapper {
 
     public async albumMap(schema: IAlbum): Promise<AlbumDto> {
         return {
+            id: schema.id,
             title: schema.title,
         };
     }
 
     public async userMap(schema: IUser): Promise<UserDto> {
         return {
-            id: schema._id,
+            id: schema._id.toString(),
             login: schema.login,
             email: schema.email,
         };
